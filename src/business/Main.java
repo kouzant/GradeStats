@@ -4,6 +4,8 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import charts.BarChart;
 import charts.PieChart;
@@ -37,16 +39,9 @@ public class Main {
 		DecimalFormat df = new DecimalFormat("#.#");
 		System.out.println("Mean: " + df.format(mean));
 		
-		//Charts
-		PieChart pieChart = new PieChart("GradeStats", "Pass/Fail", pass, fail);
-		pieChart.pack();
-		pieChart.setLocation(20, 100);
-		pieChart.setVisible(true);
-		
-		BarChart barChart = new BarChart("GradeStats", "Grades", exp);
-		barChart.pack();
-		barChart.setLocation(630, 100);
-		barChart.setVisible(true);
+		ExecutorService exec = Executors.newCachedThreadPool();
+		exec.execute(new DrawPie(pass, fail));
+		exec.execute(new DrawBar(exp));
 	}
 
 }
