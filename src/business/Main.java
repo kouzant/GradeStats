@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import charts.PieChart;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -35,6 +37,11 @@ public class Main {
 		System.out.println("Fail: "+fail);
 		DecimalFormat df = new DecimalFormat("#.#");
 		System.out.println("Mean: " + df.format(mean));
+		
+		//Charts
+		PieChart pieChart = new PieChart("GradeStats", "Pass/Fail", pass, fail);
+		pieChart.pack();
+		pieChart.setVisible(true);
 	}
 
 }
