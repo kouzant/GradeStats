@@ -21,7 +21,7 @@ public class BarChart extends JFrame{
 		CategoryDataset dataset = createDataset();
 		JFreeChart chart = createChart(dataset, chartTitle);
 		ChartPanel panel = new ChartPanel(chart);
-		panel.setPreferredSize(new java.awt.Dimension(500, 300));
+		panel.setPreferredSize(new java.awt.Dimension(600, 500));
 		setContentPane(panel);
 	}
 	

@@ -40,10 +40,12 @@ public class Main {
 		//Charts
 		PieChart pieChart = new PieChart("GradeStats", "Pass/Fail", pass, fail);
 		pieChart.pack();
+		pieChart.setLocation(20, 100);
 		pieChart.setVisible(true);
 		
 		BarChart barChart = new BarChart("GradeStats", "Grades", exp);
 		barChart.pack();
+		barChart.setLocation(630, 100);
 		barChart.setVisible(true);
 	}
 
