@@ -1,7 +1,6 @@
 package charts;
 
 import java.text.AttributedString;
-import java.text.DecimalFormat;
 
 import javax.swing.JFrame;
 
@@ -15,6 +14,7 @@ import org.jfree.data.general.PieDataset;
 import org.jfree.util.Rotation;
 
 public class PieChart extends JFrame {
+	private static final long serialVersionUID = 1L;
 	private float pass;
 	private int fail;
 	public PieChart(String appTitle, String chartTitle, float pass, int fail){
@@ -30,9 +30,6 @@ public class PieChart extends JFrame {
 
 	private PieDataset createDataset(){
 		DefaultPieDataset result = new DefaultPieDataset();
-		DecimalFormat df = new DecimalFormat("#");
-		String passS = df.format(pass);
-		String failS = String.valueOf(fail);
 		result.setValue("Pass", pass);
 		result.setValue("Fail", fail);
 		return result;
