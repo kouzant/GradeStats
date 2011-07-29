@@ -30,8 +30,8 @@ public class PieChart extends JFrame {
 
 	private PieDataset createDataset(){
 		DefaultPieDataset result = new DefaultPieDataset();
-		result.setValue("Pass", pass);
 		result.setValue("Fail", fail);
+		result.setValue("Pass", pass);
 		return result;
 	}
 	private JFreeChart createChart(PieDataset dataset, String chartTitle){
