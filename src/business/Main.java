@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import charts.BarChart;
 import charts.PieChart;
 
 public class Main {
@@ -40,6 +41,10 @@ public class Main {
 		PieChart pieChart = new PieChart("GradeStats", "Pass/Fail", pass, fail);
 		pieChart.pack();
 		pieChart.setVisible(true);
+		
+		BarChart barChart = new BarChart("GradeStats", "Grades", exp);
+		barChart.pack();
+		barChart.setVisible(true);
 	}
 
 }
