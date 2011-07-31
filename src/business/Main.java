@@ -11,8 +11,17 @@ import charts.BarChart;
 import charts.PieChart;
 
 public class Main {
-
 	public static void main(String[] args) {
+		if(args.length == 0){
+			StringBuilder sb = new StringBuilder();
+			sb.append("No url specified").append("\n");
+			sb.append("usage: java -jar GradeStats.jar URL").append("\n");
+			sb.append("URL - The url of the results page of the lesson you ");
+			sb.append("are interested in.").append("\n");
+			
+			System.out.println(sb);
+			System.exit(0);
+		}
 		float pass = 0f;
 		float passSum = 0f;
 		int fail = 0;
