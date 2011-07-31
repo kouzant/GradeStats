@@ -27,7 +27,9 @@ public class Main {
 		int fail = 0;
 		float mean = 0f;
 		ScrapeGrades sg = new ScrapeGrades(args[0]);
-		LinkedList<Integer> grades = sg.scrape();
+		ScrapeResult sr = sg.scrape();
+		LinkedList<Integer> grades = sr.getGrades();
+		String lesson = sr.getLesson();
 		HashMap<Integer, Integer> exp = new HashMap<Integer, Integer>();
 		for(int i = 0; i <= 10; i++)
 			exp.put(i, 0);
@@ -49,8 +51,8 @@ public class Main {
 		System.out.println("Mean: " + df.format(mean));
 		
 		ExecutorService exec = Executors.newCachedThreadPool();
-		exec.execute(new DrawPie(pass, fail));
-		exec.execute(new DrawBar(exp));
+		exec.execute(new DrawPie(pass, fail, lesson));
+		exec.execute(new DrawBar(exp, lesson));
 	}
 
 }
