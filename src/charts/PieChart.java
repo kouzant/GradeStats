@@ -20,6 +20,7 @@
 package charts;
 
 import java.text.AttributedString;
+import java.text.DecimalFormat;
 
 import javax.swing.JFrame;
 
@@ -49,8 +50,12 @@ public class PieChart extends JFrame {
 
 	private PieDataset createDataset(){
 		DefaultPieDataset result = new DefaultPieDataset();
-		result.setValue("Fail", fail);
-		result.setValue("Pass", pass);
+		float total = fail + pass;
+		float failPer = (fail/total)*100;
+		float passPer = (pass/total)*100;
+		DecimalFormat df = new DecimalFormat("#.##");
+		result.setValue("Fail - "+df.format(failPer)+"%", fail);
+		result.setValue("Pass - "+df.format(passPer)+"%", pass);
 		return result;
 	}
 	private JFreeChart createChart(PieDataset dataset, String chartTitle){

@@ -26,6 +26,9 @@ import javax.swing.JFrame;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.axis.NumberAxis3D;
+import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -58,6 +61,10 @@ public class BarChart extends JFrame{
 		JFreeChart chart = ChartFactory.createBarChart3D(chartTitle,
 				"Grades Category", "Grades", dataset, PlotOrientation.VERTICAL,
 				true, true, false);
+		CategoryPlot plot = (CategoryPlot) chart.getPlot();
+		plot.setForegroundAlpha(0.6f);
+		NumberAxis3D axisRange = (NumberAxis3D) plot.getRangeAxis();
+		axisRange.setStandardTickUnits(NumberAxis3D.createIntegerTickUnits());
 		return chart;
 	}
 }
