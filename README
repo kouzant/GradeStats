@@ -1,5 +1,15 @@
+GradeStats
+----------
+Copyright 2011 (c)
+Kouzoupis Antonis <kouzoupis.ant@gmail.com>
+
+About
+-----
 Statistics generator for results on students.unipi.gr
-----------------------------------------------------
 
 Usage: java -jar GradeStats.jar URL
 URL - The url of the results page of the lesson you are interested in.
+
+The source code is licensed under the LGPL License.
+jsoup library is licensed under the MIT License.
+jcommon and jfreechart libraries are licensed under the LGPL License.
