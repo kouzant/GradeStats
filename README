@@ -7,9 +7,16 @@ About
 -----
 Statistics generator for results on students.unipi.gr
 
-Usage: java -jar GradeStats.jar URL
+Usage: java -jar build/jar/GradeStats.jar URL
 
 URL - The url of the results page of the lesson you are interested in.
+
+Compilation
+-----------
+In order to build the project you should have installed the Ant build tool.
+To make a jar archive go to the base directory and type ant jar.
+To compile the source code type ant compile.
+To clean the project from the build files and executables type ant clean.
 
 The source code is licensed under the LGPL License.
 jsoup library is licensed under the MIT License.
