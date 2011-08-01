@@ -8,6 +8,7 @@ About
 Statistics generator for results on students.unipi.gr
 
 Usage: java -jar GradeStats.jar URL
+
 URL - The url of the results page of the lesson you are interested in.
 
 The source code is licensed under the LGPL License.
