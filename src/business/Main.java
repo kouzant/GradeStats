@@ -26,9 +26,6 @@ import java.util.LinkedList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import charts.BarChart;
-import charts.PieChart;
-
 public class Main {
 	public static void main(String[] args) {
 		if(args.length == 0){
@@ -68,10 +65,10 @@ public class Main {
 		System.out.println("Fail: "+fail);
 		DecimalFormat df = new DecimalFormat("#.#");
 		System.out.println("Mean: " + df.format(mean));
-		
+		float total = pass + fail;
 		ExecutorService exec = Executors.newCachedThreadPool();
-		exec.execute(new DrawPie(pass, fail, lesson));
-		exec.execute(new DrawBar(exp, lesson));
+		exec.execute(new DrawPie(pass, fail, lesson, total));
+		exec.execute(new DrawBar(exp, lesson, total));
 	}
 
 }

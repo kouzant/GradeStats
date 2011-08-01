@@ -37,10 +37,13 @@ public class PieChart extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private float pass;
 	private int fail;
-	public PieChart(String appTitle, String chartTitle, float pass, int fail){
+	private float total;
+	public PieChart(String appTitle, String chartTitle, float pass, int fail, 
+			float total){
 		super(appTitle);
 		this.pass = pass;
 		this.fail = fail;
+		this.total = total;
 		PieDataset dataset = createDataset();
 		JFreeChart chart = createChart(dataset, chartTitle);
 		ChartPanel panel = new ChartPanel(chart);
@@ -50,7 +53,6 @@ public class PieChart extends JFrame {
 
 	private PieDataset createDataset(){
 		DefaultPieDataset result = new DefaultPieDataset();
-		float total = fail + pass;
 		float failPer = (fail/total)*100;
 		float passPer = (pass/total)*100;
 		DecimalFormat df = new DecimalFormat("#.##");

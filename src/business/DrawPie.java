@@ -25,14 +25,16 @@ public class DrawPie implements Runnable {
 	private float pass;
 	private int fail;
 	private String lesson;
-	public DrawPie(float pass, int fail, String lesson){
+	private float total;
+	public DrawPie(float pass, int fail, String lesson, float total){
 		this.pass = pass;
 		this.fail = fail;
 		this.lesson = lesson;
+		this.total = total;
 	}
 	@Override
 	public void run() {
-		PieChart pieChart = new PieChart("GradeStat", lesson, pass, fail);
+		PieChart pieChart = new PieChart("GradeStat", lesson, pass, fail, total);
 		pieChart.pack();
 		pieChart.setLocation(20, 100);
 		pieChart.setVisible(true);

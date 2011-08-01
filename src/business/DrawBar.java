@@ -26,13 +26,15 @@ import charts.BarChart;
 public class DrawBar implements Runnable {
 	private HashMap<Integer, Integer> exp;
 	private String lesson;
-	public DrawBar(HashMap<Integer, Integer> exp, String lesson){
+	private float total;
+	public DrawBar(HashMap<Integer, Integer> exp, String lesson, float total){
 		this.exp = exp;
 		this.lesson = lesson;
+		this.total = total;
 	}
 	@Override
 	public void run() {
-		BarChart barChart = new BarChart("GradeStat", lesson, exp);
+		BarChart barChart = new BarChart("GradeStat", lesson, exp, total);
 		barChart.pack();
 		barChart.setLocation(630, 100);
 		barChart.setVisible(true);

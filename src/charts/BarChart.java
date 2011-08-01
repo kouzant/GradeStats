@@ -19,6 +19,7 @@
  */
 package charts;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
@@ -26,7 +27,8 @@ import javax.swing.JFrame;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.axis.CategoryAxis3D;
+import org.jfree.chart.axis.CategoryLabelPositions;
 import org.jfree.chart.axis.NumberAxis3D;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
@@ -35,11 +37,14 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 
 public class BarChart extends JFrame{
+	private static final long serialVersionUID = 1L;
 	HashMap<Integer, Integer> exp;
+	private float total;
 	public BarChart(String appTitle, String chartTitle,
-			HashMap<Integer, Integer> exp){
+			HashMap<Integer, Integer> exp, float total){
 		super(appTitle);
 		this.exp = exp;
+		this.total = total;
 		CategoryDataset dataset = createDataset();
 		JFreeChart chart = createChart(dataset, chartTitle);
 		ChartPanel panel = new ChartPanel(chart);
@@ -49,11 +54,11 @@ public class BarChart extends JFrame{
 	
 	private CategoryDataset createDataset(){
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-
-		//columns
-		String category = "Grades";
+		DecimalFormat df = new DecimalFormat("#.##");
 		for(int i=0; i<=10; i++){
-			dataset.addValue(exp.get(i), new Integer(i), category);
+			int value = exp.get(i);
+			dataset.addValue(value, new Integer(i), df.format((value/total)*100)
+					+"% "+i);
 		}
 		return dataset;
 	}
@@ -65,6 +70,11 @@ public class BarChart extends JFrame{
 		plot.setForegroundAlpha(0.6f);
 		NumberAxis3D axisRange = (NumberAxis3D) plot.getRangeAxis();
 		axisRange.setStandardTickUnits(NumberAxis3D.createIntegerTickUnits());
+		
+		CategoryAxis3D domainAxis = (CategoryAxis3D)plot.getDomainAxis();
+        domainAxis.setCategoryLabelPositions(
+            CategoryLabelPositions.createUpRotationLabelPositions(Math.PI / 6.0)
+        );
 		return chart;
 	}
 }
