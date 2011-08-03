@@ -60,6 +60,7 @@ public class SwingMain extends JFrame{
 		panel.add(button);
 		add(BorderLayout.NORTH, panel);
 		add(new JScrollPane(board));
+		urlField.requestFocusInWindow();
 	}
 	public static void main(String args[]){
 		run(new SwingMain(), 500, 150);
