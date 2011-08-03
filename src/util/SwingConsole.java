@@ -28,6 +28,7 @@ public class SwingConsole {
 			public void run() {
 				frame.setTitle(frame.getClass().getSimpleName());
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.setLocation(380, 610);
 				frame.setSize(width, height);
 				frame.setVisible(true);
 			}

@@ -26,10 +26,7 @@ import java.util.LinkedList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static util.SwingConsole.*;
-import gui.SwingMain;
-
-public class Main {
+public class Compute {
 	public static StringBuilder compute(String url) {
 		if(url == null){
 			StringBuilder sb = new StringBuilder();

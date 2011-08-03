@@ -5,7 +5,7 @@
     <property name="lib.dir"        value="lib"/>
     <property name="classes.dir"    value="${build.dir}/classes"/>
     <property name="jar.dir"        value="${build.dir}/jar"/>
-    <property name="main-class"     value="business.Main"/>
+    <property name="main-class"     value="gui.SwingMain"/>
 
     <path id="classpath">
         <fileset dir="${lib.dir}" includes="**/*.jar"/>
