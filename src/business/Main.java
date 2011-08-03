@@ -26,9 +26,12 @@ import java.util.LinkedList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import static util.SwingConsole.*;
+import gui.SwingMain;
+
 public class Main {
-	public static void main(String[] args) {
-		if(args.length == 0){
+	public static StringBuilder compute(String url) {
+		if(url == null){
 			StringBuilder sb = new StringBuilder();
 			sb.append("No url specified").append("\n");
 			sb.append("usage: java -jar GradeStats.jar URL").append("\n");
@@ -42,7 +45,7 @@ public class Main {
 		float passSum = 0f;
 		int fail = 0;
 		float mean = 0f;
-		ScrapeGrades sg = new ScrapeGrades(args[0]);
+		ScrapeGrades sg = new ScrapeGrades(url);
 		ScrapeResult sr = sg.scrape();
 		LinkedList<Integer> grades = sr.getGrades();
 		String lesson = sr.getLesson();
@@ -65,10 +68,17 @@ public class Main {
 		System.out.println("Fail: "+fail);
 		DecimalFormat df = new DecimalFormat("#.#");
 		System.out.println("Mean: " + df.format(mean));
+		StringBuilder results = new StringBuilder();
+		results.append("Pass: ").append(Math.round(pass)).append("\n");
+		results.append("Fail: ").append(fail).append("\n");
+		results.append("Mean: ").append(df.format(mean));
+		
 		float total = pass + fail;
 		ExecutorService exec = Executors.newCachedThreadPool();
 		exec.execute(new DrawPie(pass, fail, lesson, total));
 		exec.execute(new DrawBar(exp, lesson, total));
+		
+		return results;
 	}
 
 }
