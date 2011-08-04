@@ -36,7 +36,7 @@ public class DrawBar implements Runnable {
 	public void run() {
 		BarChart barChart = new BarChart("GradeStat", lesson, exp, total);
 		barChart.pack();
-		barChart.setLocation(630, 100);
+		barChart.setLocation(640, 100);
 		barChart.setVisible(true);
 		Thread.yield();
 	}

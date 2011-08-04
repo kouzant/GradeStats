@@ -51,12 +51,11 @@ public class SwingMain extends JFrame{
 	}
 	
 	public SwingMain(){
-		super("GradeStats");
 		UrlListener listener = new UrlListener();
 		button.addActionListener(listener);
 		urlField.addActionListener(listener);
 		JPanel panel = new JPanel(new FlowLayout());
-		panel.add(new JLabel("Enter desired url"));
+		panel.add(new JLabel("Enter desired url:"));
 		panel.add(urlField);
 		panel.add(button);
 		add(BorderLayout.NORTH, panel);
