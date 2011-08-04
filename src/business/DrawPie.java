@@ -34,7 +34,7 @@ public class DrawPie implements Runnable {
 	}
 	@Override
 	public void run() {
-		PieChart pieChart = new PieChart("GradeStat", lesson, pass, fail, total);
+		PieChart pieChart = new PieChart("GradeStats", lesson, pass, fail, total);
 		pieChart.pack();
 		pieChart.setLocation(20, 100);
 		pieChart.setVisible(true);

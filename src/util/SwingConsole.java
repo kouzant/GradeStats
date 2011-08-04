@@ -28,7 +28,7 @@ public class SwingConsole {
 			public void run() {
 				frame.setTitle("GradeStats");
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				frame.setLocation(380, 630);
+				frame.setLocation(380, 640);
 				frame.setSize(width, height);
 				frame.setVisible(true);
 			}
