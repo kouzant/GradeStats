@@ -51,6 +51,7 @@ public class SwingMain extends JFrame{
 	}
 	
 	public SwingMain(){
+		super("GradeStats");
 		UrlListener listener = new UrlListener();
 		button.addActionListener(listener);
 		urlField.addActionListener(listener);
