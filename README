@@ -7,7 +7,9 @@ About
 -----
 Statistics generator for results on students.unipi.gr
 
-Usage: java -jar build/jar/GradeStats.jar URL
+If you want to use the gui version, just type ant run.
+If you want to use the command line version, type 
+java -jar build/jar/GradeStats.jar URL
 
 URL - The url of the results page of the lesson you are interested in.
 
