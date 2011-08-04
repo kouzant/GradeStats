@@ -28,53 +28,46 @@ import java.util.concurrent.Executors;
 
 public class Compute {
 	public static StringBuilder compute(String url) {
-		if(url == null){
-			StringBuilder sb = new StringBuilder();
-			sb.append("No url specified").append("\n");
-			sb.append("usage: java -jar GradeStats.jar URL").append("\n");
-			sb.append("URL - The url of the results page of the lesson you ");
-			sb.append("are interested in.").append("\n");
-			
-			System.out.println(sb);
-			System.exit(0);
-		}
-		float pass = 0f;
-		float passSum = 0f;
-		int fail = 0;
-		float mean = 0f;
-		ScrapeGrades sg = new ScrapeGrades(url);
-		ScrapeResult sr = sg.scrape();
-		LinkedList<Integer> grades = sr.getGrades();
-		String lesson = sr.getLesson();
-		HashMap<Integer, Integer> exp = new HashMap<Integer, Integer>();
-		for(int i = 0; i <= 10; i++)
-			exp.put(i, 0);
-		Iterator<Integer> gradesIt = grades.iterator();
-		while(gradesIt.hasNext()){
-			int tmpGrade = gradesIt.next();
-			if(tmpGrade >= 5){
-				passSum = passSum + tmpGrade;
-				pass++;
-			}else
-				fail++;
-			int curCount = exp.get(tmpGrade);
-			exp.put(tmpGrade, ++curCount);
-		}
-		mean = passSum / pass;
-		System.out.println("Pass: "+pass);
-		System.out.println("Fail: "+fail);
-		DecimalFormat df = new DecimalFormat("#.#");
-		System.out.println("Mean: " + df.format(mean));
 		StringBuilder results = new StringBuilder();
-		results.append("Pass: ").append(Math.round(pass)).append("\n");
-		results.append("Fail: ").append(fail).append("\n");
-		results.append("Mean: ").append(df.format(mean));
-		
-		float total = pass + fail;
-		ExecutorService exec = Executors.newCachedThreadPool();
-		exec.execute(new DrawPie(pass, fail, lesson, total));
-		exec.execute(new DrawBar(exp, lesson, total));
-		
+		if(url.equals("")){
+			results.append("No url specified").append("\n");
+			results.append("You must specify the url of the results page ");
+			results.append("of the lesson you are interested in.").append("\n");
+		}else{
+			float pass = 0f;
+			float passSum = 0f;
+			int fail = 0;
+			float mean = 0f;
+			ScrapeGrades sg = new ScrapeGrades(url);
+			ScrapeResult sr = sg.scrape();
+			LinkedList<Integer> grades = sr.getGrades();
+			String lesson = sr.getLesson();
+			HashMap<Integer, Integer> exp = new HashMap<Integer, Integer>();
+			for(int i = 0; i <= 10; i++)
+				exp.put(i, 0);
+			Iterator<Integer> gradesIt = grades.iterator();
+			while(gradesIt.hasNext()){
+				int tmpGrade = gradesIt.next();
+				if(tmpGrade >= 5){
+					passSum = passSum + tmpGrade;
+					pass++;
+				}else
+					fail++;
+				int curCount = exp.get(tmpGrade);
+				exp.put(tmpGrade, ++curCount);
+			}
+			mean = passSum / pass;
+			DecimalFormat df = new DecimalFormat("#.#");
+
+			results.append("Pass: ").append(Math.round(pass)).append("\n");
+			results.append("Fail: ").append(fail).append("\n");
+			results.append("Mean: ").append(df.format(mean));
+
+			float total = pass + fail;
+			ExecutorService exec = Executors.newCachedThreadPool();
+			exec.execute(new DrawPie(pass, fail, lesson, total));
+			exec.execute(new DrawBar(exp, lesson, total));
+		}
 		return results;
 	}
 

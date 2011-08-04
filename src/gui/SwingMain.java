@@ -63,6 +63,13 @@ public class SwingMain extends JFrame{
 		urlField.requestFocusInWindow();
 	}
 	public static void main(String args[]){
-		run(new SwingMain(), 500, 150);
+		if(args.length == 1){
+			System.out.println("Command line mode");
+			StringBuilder sb = new StringBuilder();
+			sb = Compute.compute(args[0]);
+			System.out.println(sb.toString());
+		}else{
+			run(new SwingMain(), 500, 150);
+		}
 	}
 }
