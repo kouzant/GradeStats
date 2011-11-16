@@ -7,6 +7,8 @@ About
 -----
 Statistics generator for results on students.unipi.gr
 
+First you have to import the certificate from students.unipi.gr
+to your personal KeyStore [Draft Solution :P]
 If you want to use the gui version, just type ant run.
 If you want to use the command line version, type 
 java -jar build/jar/GradeStats.jar URL
