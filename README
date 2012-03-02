@@ -11,7 +11,7 @@ Usage
 -----
 * First you have to import the certificate from students.unipi.gr to
   a keystore:
-    $keytool -import -v file ssl/students.unipi.gr -keystore ssl/GradeStats.jks -storepass GradeStatsPass
+    $keytool -import -v -file ssl/students.unipi.gr -keystore ssl/GradeStats.jks -storepass GradeStatsPass
   You should trust the certificate, trust me! Of course you can change
   keystore password.
 * Set the keystore location in config file. (default ssl/GradeStats.jks)
