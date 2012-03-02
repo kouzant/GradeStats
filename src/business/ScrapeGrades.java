@@ -39,7 +39,8 @@ public class ScrapeGrades {
 		LinkedList<Integer> grades = new LinkedList<Integer>();
 		ScrapeResult sr = null;
 		try{
-			System.setProperty("javax.net.ssl.trustStore", "students.cs.unipi.gr.jks");
+			System.setProperty("javax.net.ssl.trustStore", "ssl/"+
+					"GradeStats.jks");
 			Document doc = Jsoup.connect(url).get();
 			Elements lessonEl = doc.select("div[class=tablebold]");
 			String lesson = lessonEl.text();
