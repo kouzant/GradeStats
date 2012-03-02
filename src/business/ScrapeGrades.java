@@ -28,8 +28,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import util.ConfigParser;
+
 public class ScrapeGrades {
 	private String url;
+	private static String CONFIG = "config";
 	
 	public ScrapeGrades(String url){
 		this.url = url;
@@ -39,8 +42,9 @@ public class ScrapeGrades {
 		LinkedList<Integer> grades = new LinkedList<Integer>();
 		ScrapeResult sr = null;
 		try{
-			System.setProperty("javax.net.ssl.trustStore", "ssl/"+
-					"GradeStats.jks");
+			ConfigParser configParser = new ConfigParser(CONFIG);
+			System.setProperty("javax.net.ssl.trustStore", configParser.
+					getConfigFile());
 			Document doc = Jsoup.connect(url).get();
 			Elements lessonEl = doc.select("div[class=tablebold]");
 			String lesson = lessonEl.text();
